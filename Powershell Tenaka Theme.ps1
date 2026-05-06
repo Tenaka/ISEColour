@@ -1,81 +1,84 @@
-﻿#PowerShell ISE, Tenaka-style dark theme
+#PowerShell ISE, Tenaka dark theme
 
-#Main editor background
-$psISE.Options.ScriptPaneBackgroundColor = '#FF0B1F2A'            #very dark blue
+#Colours
+$DarkBlue   = '#FF0B1F2A' #very dark blue
+$NearWhite  = '#FFEAF4F8' #near white
+$Bronze     = '#FFD19047' # bronze/gold
+$Yellow     = '#FFFFD166' #warm yellow
+$MutedText  = '#FFB7CBD6' #muted grey/blue
+$BlueAccent = '#FF4FC3F7' #light blue
+$Green      = '#FF7CFC98' #green
+$Copper     = '#FFB56A2F' #darker bronze/copper
+$Red        = '#FFFF6B6B' #red
 
-#Console / output pane
-$psISE.Options.ConsolePaneBackgroundColor     = '#FF0B1F2A'       #very dark blue
-$psISE.Options.ConsolePaneTextBackgroundColor = '#FF0B1F2A'       #very dark blue
-$psISE.Options.ConsolePaneForegroundColor     = '#FFB7CBD6'       #muted grey/blue
+#WPF colour objects, required for XML token colours
+$DarkBlueColor   = [System.Windows.Media.ColorConverter]::ConvertFromString($DarkBlue)
+$NearWhiteColor  = [System.Windows.Media.ColorConverter]::ConvertFromString($NearWhite)
+$BronzeColor     = [System.Windows.Media.ColorConverter]::ConvertFromString($Bronze)
+$YellowColor     = [System.Windows.Media.ColorConverter]::ConvertFromString($Yellow)
+$MutedTextColor  = [System.Windows.Media.ColorConverter]::ConvertFromString($MutedText)
+$BlueAccentColor = [System.Windows.Media.ColorConverter]::ConvertFromString($BlueAccent)
+$GreenColor      = [System.Windows.Media.ColorConverter]::ConvertFromString($Green)
 
-#Normal / unknown text
-$psISE.Options.TokenColors.Item('Unknown') = '#FFEAF4F8'          #near white
-
-#Commands and functions
-$psISE.Options.TokenColors.Item('Command')         = '#FFD19047'  #Tenaka bronze/gold
-$psISE.Options.TokenColors.Item('CommandArgument') = '#FFEAF4F8'  #near white
-
-#Parameters
-$psISE.Options.TokenColors.Item('CommandParameter') = '#FFFFD166' #warm yellow
-
-#PowerShell keywords
-$psISE.Options.TokenColors.Item('Keyword') = '#FFD19047'          #Tenaka bronze/gold
-
-#Variables
-$psISE.Options.TokenColors.Item('Variable') = '#FF7CFC98'         #green
-
-#Strings
-$psISE.Options.TokenColors.Item('String') = '#FFB7CBD6'           #muted grey/blue
-
-#Numbers
-$psISE.Options.TokenColors.Item('Number') = '#FFFFD166'           #warm yellow
-
-#Operators
-$psISE.Options.TokenColors.Item('Operator') = '#FFEAF4F8'         #near white
-
-#Types, for example [string], [int], [System.IO.File]
-$psISE.Options.TokenColors.Item('Type') = '#FF4FC3F7'             #light blue
-
-#Object members, for example .Name, .FullName
-$psISE.Options.TokenColors.Item('Member') = '#FF4FC3F7'           #light blue
-
-#Comments
-$psISE.Options.TokenColors.Item('Comment') = '#FFB56A2F'          #darker bronze/copper
-
-#Errors
-$psISE.Options.ErrorForegroundColor = '#FFFF6B6B'                 #red
-$psISE.Options.ErrorBackgroundColor = '#FF0B1F2A'                 #very dark blue
-
-#Warnings
-$psISE.Options.WarningForegroundColor = '#FFFFD166'               #warm yellow
-$psISE.Options.WarningBackgroundColor = '#FF0B1F2A'               #very dark blue
-
-#Notepad Style Text
-$psISE.Options.ScriptPaneForegroundColor = '#FFEAF4F8'            #near white
-
-#XML colours
-
-$DarkBlue   = [System.Windows.Media.ColorConverter]::ConvertFromString('#FF0B1F2A') # very dark blue
-$NearWhite  = [System.Windows.Media.ColorConverter]::ConvertFromString('#FFEAF4F8') # near white
-$Bronze     = [System.Windows.Media.ColorConverter]::ConvertFromString('#FFD19047') # Tenaka bronze
-$Yellow     = [System.Windows.Media.ColorConverter]::ConvertFromString('#FFFFD166') # warm yellow
-$MutedText  = [System.Windows.Media.ColorConverter]::ConvertFromString('#FFB7CBD6') # muted grey blue
-$BlueAccent = [System.Windows.Media.ColorConverter]::ConvertFromString('#FF4FC3F7') # light blue
-$Green      = [System.Windows.Media.ColorConverter]::ConvertFromString('#FF7CFC98') # green
-
-#Main editor pane
+#Main editor background and plain text
 $psISE.Options.ScriptPaneBackgroundColor = $DarkBlue
 $psISE.Options.ScriptPaneForegroundColor = $NearWhite
 
-#XML syntax highlighting
-$psISE.Options.XmlTokenColors.Item('Text')             = $NearWhite   # plain text inside XML nodes, e.g. reg add HKLM...
-$psISE.Options.XmlTokenColors.Item('ElementName')      = $Bronze      # element names, e.g. RunSynchronousCommand
-$psISE.Options.XmlTokenColors.Item('Attribute')        = $Yellow      # attribute names, e.g. processorArchitecture
-$psISE.Options.XmlTokenColors.Item('QuotedString')     = $MutedText   # attribute values, e.g. "urn:schemas-microsoft-com:unattend"
-$psISE.Options.XmlTokenColors.Item('Tag')              = $BlueAccent  # angle brackets, < and >
-$psISE.Options.XmlTokenColors.Item('Quote')            = $MutedText   # quote marks
-$psISE.Options.XmlTokenColors.Item('Comment')          = $Green       # XML comments
-$psISE.Options.XmlTokenColors.Item('CommentDelimiter') = $Green       # <!-- and -->
-$psISE.Options.XmlTokenColors.Item('CharacterData')    = $NearWhite   # CDATA
-$psISE.Options.XmlTokenColors.Item('MarkupExtension')  = $BlueAccent  # XAML style markup extensions
+#Console / output pane
+$psISE.Options.ConsolePaneBackgroundColor     = $DarkBlue
+$psISE.Options.ConsolePaneTextBackgroundColor = $DarkBlue
+$psISE.Options.ConsolePaneForegroundColor     = $MutedText
 
+#Normal / unknown text
+$psISE.Options.TokenColors.Item('Unknown') = $NearWhite
+
+#Commands and functions
+$psISE.Options.TokenColors.Item('Command')         = $Bronze
+$psISE.Options.TokenColors.Item('CommandArgument') = $NearWhite
+
+#Parameters
+$psISE.Options.TokenColors.Item('CommandParameter') = $Yellow
+
+#PowerShell keywords
+$psISE.Options.TokenColors.Item('Keyword') = $Bronze
+
+#Variables
+$psISE.Options.TokenColors.Item('Variable') = $Green
+
+#Strings
+$psISE.Options.TokenColors.Item('String') = $MutedText
+
+#Numbers
+$psISE.Options.TokenColors.Item('Number') = $Yellow
+
+#Operators
+$psISE.Options.TokenColors.Item('Operator') = $NearWhite
+
+#Types, for example [string], [int], [System.IO.File]
+$psISE.Options.TokenColors.Item('Type') = $BlueAccent
+
+#Object members, for example .Name, .FullName
+$psISE.Options.TokenColors.Item('Member') = $BlueAccent
+
+#Comments
+$psISE.Options.TokenColors.Item('Comment') = $Copper
+
+#Errors
+$psISE.Options.ErrorForegroundColor = $Red
+$psISE.Options.ErrorBackgroundColor = $DarkBlue
+
+#Warnings
+$psISE.Options.WarningForegroundColor = $Yellow
+$psISE.Options.WarningBackgroundColor = $DarkBlue
+
+#XML syntax highlighting
+$psISE.Options.XmlTokenColors.Item('Text')             = $NearWhiteColor
+$psISE.Options.XmlTokenColors.Item('ElementName')      = $BronzeColor
+$psISE.Options.XmlTokenColors.Item('Attribute')        = $YellowColor
+$psISE.Options.XmlTokenColors.Item('QuotedString')     = $MutedTextColor
+$psISE.Options.XmlTokenColors.Item('Tag')              = $BlueAccentColor
+$psISE.Options.XmlTokenColors.Item('Quote')            = $MutedTextColor
+$psISE.Options.XmlTokenColors.Item('Comment')          = $GreenColor
+$psISE.Options.XmlTokenColors.Item('CommentDelimiter') = $GreenColor
+$psISE.Options.XmlTokenColors.Item('CharacterData')    = $NearWhiteColor
+$psISE.Options.XmlTokenColors.Item('MarkupExtension')  = $BlueAccentColor
