@@ -1,4 +1,4 @@
-#PowerShell ISE, Tenaka dark theme
+#PowerShell ISE, -style dark theme
 
 #Colours
 $DarkBlue   = '#FF0B1F2A' #very dark blue
@@ -53,6 +53,12 @@ $psISE.Options.TokenColors.Item('Number') = $Yellow
 
 #Operators
 $psISE.Options.TokenColors.Item('Operator') = $NearWhite
+
+#Brackets, braces, parentheses, separators
+$psISE.Options.TokenColors.Item('GroupStart')         = $NearWhite # { ( [
+$psISE.Options.TokenColors.Item('GroupEnd')           = $NearWhite # } ) ]
+$psISE.Options.TokenColors.Item('StatementSeparator') = $NearWhite # ;
+$psISE.Options.TokenColors.Item('LineContinuation')   = $NearWhite # `
 
 #Types, for example [string], [int], [System.IO.File]
 $psISE.Options.TokenColors.Item('Type') = $BlueAccent
